@@ -8,11 +8,13 @@ int[] andrewScores = new int[] { 92, 89, 81, 96, 90 };
 int[] emmaScores = new int[] { 90, 85, 87, 98, 68 };
 int[] loganScores = new int[] { 90, 95, 87, 88, 96 };
 
+decimal[] extraPoints = new decimal[] { 3.4M, 1.6M, 2.9M, 4.1M, 6.6M };
+
 string[] studentsName = new string[] { "Sophia", "Andrew", "Emma", "Logan" };
 int[] studentScores = new int[10];
 string currentStudentLetterGrade = "";
 
-Console.WriteLine("Student\t\tGrade\n");
+Console.WriteLine("Student\t\tExam Score\tExtra Points\tFinal Score\tGrade\t\t\n");
 
 foreach (string name in studentsName)
 {
@@ -38,6 +40,7 @@ foreach (string name in studentsName)
     int sumAssignmentScores = 0;
 
     decimal currentStudentGrade = 0;
+    decimal currExtraPoints = 0;
 
     foreach (int score in studentScores)
     {
@@ -45,6 +48,8 @@ foreach (string name in studentsName)
     }
 
     currentStudentGrade = (decimal)(sumAssignmentScores) / currentAssignments;
+    currExtraPoints = extraPoints[Array.IndexOf(studentsName, name)];
+    decimal currFinalScore = currentStudentGrade + currExtraPoints;
 
     if (currentStudentGrade >= 97)
         currentStudentLetterGrade = "A+";
@@ -82,8 +87,8 @@ foreach (string name in studentsName)
     else if (currentStudentGrade >= 60)
         currentStudentLetterGrade = "D-";
 
-    Console.WriteLine($"{currStudent}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}");
+    Console.WriteLine($"{currStudent}\t\t{currentStudentGrade}\t\t{currExtraPoints}\t\t{currFinalScore}\t\t{currentStudentLetterGrade}");
 }
 
-Console.WriteLine("Press the Enter key to continue");
+Console.WriteLine("\nPress the Enter key to continue");
 Console.ReadLine();
